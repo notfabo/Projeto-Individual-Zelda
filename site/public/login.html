@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./assets/triforce.png">
+    <link rel="stylesheet" href="./css/login.css">
+    <title>Acessar The Legend of Zelda</title>
+    <script src="./js/funcoes.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="header">
+        <nav>
+            <div><a href="index.html"><img src="./assets/tattologo.png" class="logo"></a></div>
+            <div>
+                <!-- <li><a href="login.html"><img src="./assets/icon_zelda.png" class="icon-login"></a></li> -->
+            </div>
+            <ul>
+                <div class="center-header">
+                    <li class="fix"><a href="index.html">INÍCIO</a></li>
+                    <li class="fix"><a href="#sobre">SOBRE</a></li>
+                    <li class="fix"><a href="#noticias">NOTÍCIAS</a></li>
+                </div>
+                <div class="right-header">
+                    <li class="fix" id="login"><a href="login.html">Entrar</a></li>
+                    <li><a>|</a></li>
+                    <li class="fix" id="login"><a href="cadastro.html">Cadastrar-se</a></li>
+                </div>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main-login">
+        <div class="pai">
+            <div class="alerta_erro">
+                <div class="card_erro" id="cardErro">
+                    <span id="mensagem_erro"></span>
+                </div>
+            </div>
+            <div class="left-login">
+                <h1>Faça login <br>E venha conhecer o nosso site</h1>
+                <img src="./assets/link-login.png" alt="" class="link-login">
+            </div>
+            <div class="right-login">
+                <div class="card-login">
+                    <h1>Entrar</h1>
+                    <div class="textfield">
+                        <label for="usuario">E-mail</label>
+                        <input id="email_input" type="text" name="email" placeholder="E-mail">
+                    </div>
+                    <div class="textfield">
+                        <label for="senha">Senha</label>
+                        <input id="senha_input" type="password" name="senha" placeholder="********">
+                    </div>
+                    <button class="btn-login" onclick="entrar()">ENTRAR</button>
+                </div>
+            </div>
+            <div class="modal-containerL" id="modal_container">
+                <div class="modalL">
+                    <h2 id="titulo_m"></h2>
+                    <p id="p_msg"></p>
+                </div>
+            </div>
+        </div>
+        <div id="div_erros_login"></div>
+    </div>
+
+
+
+</body>
+<footer>
+    <div class="social">
+        <a href=""><i class="fab fa-instagram"></i></a>
+        <a href=""><i class="fab fa-twitter"></i></a>
+        <a href=""><i class="fab fa-facebook-f"></i></a>
+        <a href=""><i class="fab fa-discord"></i></a>
+        <a href=""><i class="fab fa-twitch"></i></a>
+    </div>
+
+    <ul class="list">
+        <li>
+            <a href="index.html">Início</a>
+        </li>
+    </ul>
+    <p class="copyriht">
+        © 2022 The Legend of Zelda
+    </p>
+</footer>
+
+</html>
+<script>
+    function entrar() {
+
+        const open = document.getElementById('open');
+        const modal_container = document.getElementById('modal_container');
+        const close = document.getElementById('close');
+
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            titulo_m.innerHTML = `<br>Preencha todos os campos para prosseguir.`
+
+
+            modal_container.classList.add('show');
+
+
+            modal_container.addEventListener('click', () => {
+                    modal_container.classList.remove('show');
+                });
+        
+        
+        }
+        else {
+            titulo_m.innerHTML = `<br>Login realizado com sucesso!`
+
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+
+                    setTimeout(function () {
+                        window.location = "./dashboard/dashboard.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+                titulo_m.innerHTML = `<br>Email ou senha inválidos.`
+            p_msg.innerHTML = ``
+
+
+            modal_container.classList.add('show');
+
+
+            modal_container.addEventListener('click', () => {
+                    modal_container.classList.remove('show');
+                });
+                
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+</script>

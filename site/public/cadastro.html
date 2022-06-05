@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pr-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./assets/triforce.png">
+    <link rel="stylesheet" href="./css/cadastro.css">
+    <title>Cadastrar The Legend of Zelda</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="./js/funcoes.js"></script>
+    <!-- <link rel="stylesheet" href="./css/captcha.css"> -->
+    <!-- <script src="./js/captcha.js"></script>   -->
+</head>
+<body onload="createCaptcha()">
+
+    <div class="header">
+        <nav>
+            <div><a href="index.html"><img src="./assets/tattologo.png" class="logo"></a></div>
+            <ul>
+                <div class="center-header">
+                    <li class="fix"><a href="index.html">INÍCIO</a></li>
+                    <li class="fix"><a href="#sobre">SOBRE</a></li>
+                    <li class="fix"><a href="#noticias">NOTÍCIAS</a></li>
+                </div>
+                <div class="right-header">
+                    <li class="fix" ><a href="login.html">Entrar</a></li>
+                    <li><a>|</a></li>
+                    <li class="fix" id="login" class="cad"><a href="cadastro.html">Cadastrar-se</a></li>
+                </div>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main-cadastro">
+        <div class="pai">
+            <div class="left-cadastro">
+                <h1>Faça seu cadastro <br>E entre para o nosso time</h1>
+                <img src="./assets/princessZelda.png" alt="" class="zelda-cadastro">
+            </div>
+            <div class="right-cadastro">
+                <div class="card-cadastro">
+                    <h1>Cadastrar-se</h1>
+                    <div class="textfield">
+                        <label for="nome">Nome</label>
+                        <input id="nome_input" type="text" name="nome" placeholder="Nome completo">
+                    </div>
+                    <div class="textfield">
+                        <label for="usuario">E-mail</label>
+                        <input id="email_input" type="text" name="email" placeholder="E-mail">
+                    </div>
+                    <div class="textfield">
+                        <label for="telefone">Telefone</label>
+                        <input id="tel_input" type="number" name="telefone" placeholder="Seu telefone">
+                    </div>
+                    <div class="textfield">
+                        <label for="senha">Senha</label>
+                        <input id="senha_input" type="password" name="senha" placeholder="********">
+                    </div>
+                    <div class="tipo-campo"><p>Selecione o jogo que mais gostou</p>
+                        <div class="select-style">
+                        <select id="sel_op" class="custom-select">
+                            <option selected disabled value="0">Selecione um jogo</option>
+                            <option value="2000">Phantom Hourglass</option>
+                            <option value="2001">Ocarina of Time</option>
+                            <option value="2002">Majora's Mask</option>
+                            <option value="2003">Breath of the Wild</option>
+                        </select>
+                    </div>
+                    </div>
+                    <button class="btn-cadastro" onclick="cadastrar()">CADASTRAR</button>
+                </div>
+            </div>
+        </div>
+        <div class="modal-containerL" id="modal_container">
+            <div class="modalL">
+                <h2 id="titulo_m"></h2>
+                <p id="p_msg"></p>
+            </div>
+        </div>
+        <div id="div_erros_login"></div>
+    </div>
+</body>
+
+<footer>
+    <div class="social">
+        <a href=""><i class="fab fa-instagram"></i></a>
+        <a href=""><i class="fab fa-twitter"></i></a>
+        <a href=""><i class="fab fa-facebook-f"></i></a>
+        <a href=""><i class="fab fa-discord"></i></a>
+        <a href=""><i class="fab fa-twitch"></i></a>
+    </div>
+
+    <ul class="list">
+        <li>
+            <a href="index.html">Início</a>
+        </li>
+    </ul>
+    <p class="copyriht">
+        © 2022 The Legend of Zelda
+    </p>
+</footer>
+</html>
+
+<script>
+
+function cadastrar() {
+
+        const open = document.getElementById('open');
+        const modal_container = document.getElementById('modal_container');
+        const close = document.getElementById('close');
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeVar = nome_input.value;
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+        var telVar = tel_input.value;
+        var selectVar = sel_op.value;
+
+        if (nomeVar == "" || emailVar == "" || senhaVar == "" || telVar == "" || selectVar == "") {
+            titulo_m.innerHTML = `<br>Preencha todos os campos para prosseguir.`
+
+            modal_container.classList.add('show');
+
+        
+            modal_container.addEventListener('click', () => {
+                    modal_container.classList.remove('show');
+                });
+            return
+        }
+
+        if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
+            titulo_m.innerHTML = `<br>Email inválidos.`
+
+            modal_container.classList.add('show');
+
+
+            modal_container.addEventListener('click', () => {
+                    modal_container.classList.remove('show');
+                });
+            return
+        }
+
+        if (telVar.length < 11){
+            titulo_m.innerHTML = `<br>Telefone inválido.`
+            p_msg.innerHTML = `<br> Ele deve conter 11 caracteres`
+
+            modal_container.classList.add('show');
+
+
+            modal_container.addEventListener('click', () => {
+                    modal_container.classList.remove('show');
+                });
+            return
+        }
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+                telServer: telVar,
+                selectServer: selectVar
+            })
+        }).then(function () {
+
+            titulo_m.innerHTML = `<br>Cadastro realizado com sucesso!`
+            p_msg.innerHTML = ``
+            window.location.href = "login.html"
+
+
+            modal_container.classList.add('show');
+
+
+            close.addEventListener('click', () => {
+                modal_container.classList.remove('show');
+            });
+            setTimeout(() => {
+                    window.location = "login.html";
+                }, "2000")
+        })
+            .catch(function (errinho) {
+                console.error(errinho)
+            })
+
+        console.log()
+    }
+
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+
+</script>

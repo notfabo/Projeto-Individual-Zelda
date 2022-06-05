@@ -1,0 +1,639 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@1,500&family=Roboto:wght@500&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    -webkit-box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+.hero{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5));
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+nav{
+    background-color: rgba(0, 0, 0, 0.603);
+    width: 100%;
+    height: 11vh;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    /* justify-items: center; */
+    border-bottom: 2px inset #D4AD5C;
+    border-top: 2px inset #D4AD5C;
+    position: fixed;
+    z-index: 1; 
+}
+
+.center-header{
+    display: inline;
+    /* margin-left: 220px; */
+    margin-right: -50px;
+    
+}
+
+.right-header{
+    display: inline;
+    margin-left: 200px;
+}
+
+.right-header a{
+    font-size: 20px;
+}
+
+.icon-login {
+    width: 25px;
+    position: absolute;
+    margin-left: 52.2%;
+    margin-top: -10px;
+    cursor: pointer;
+}
+
+.icon-login:hover{
+    color: #D4AD5C;
+}
+
+nav .logo{
+    width: 80px;
+}
+
+nav .center-header li{
+    list-style: none;
+    display: inline-block;
+    margin-left: 80px;
+}
+
+nav .right-header li{
+    list-style: none;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+
+nav ul li a{
+    text-decoration: none;
+    color: white;
+    font-size: 25px;
+    letter-spacing: 2px;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+nav ul li a:hover{
+    color: #D4AD5C;
+}
+
+.fix a {
+    position: relative;
+    display: block;
+    color: #ecf0f1;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.fix a::after {
+    position: absolute;
+    content: "";
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #D4AD5C;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s;
+}
+
+
+.fix a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+
+.logo-entrar{
+    width: 30px;
+    height: 30px;
+}
+
+
+/*header end */
+
+/* inicio video start*/
+
+.content{
+    text-align: center;
+}
+
+.content p{
+    font-size: 30px;
+    color: white;
+    font-family: 'Bitter', serif;
+}
+
+.content-img-zelda{
+    margin-bottom: 30px;
+}
+
+.bg-video{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+@media (min-aspect-ratio: 16/9){
+    .bg-video{
+        width: 100%;
+        height: auto;
+    }
+}
+@media (max-aspect-ratio: 16/9){
+    .bg-video{
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* Inicio video end */
+
+
+
+
+
+
+
+/* Inicio content video  */
+.content-video{
+    background: url(../assets/background_Prancheta\ 1.png);
+    margin: 0%;
+    padding: 0;
+    /* position: relative; */
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.2);
+    text-align: center;
+    justify-content: center;
+    display: flex;
+}
+
+.card-video{
+    /* margin: 6% 0 0 23%; */
+    width: 50%;
+    height: 60vh;
+    background-color: transparent;
+    margin-bottom: 60px;
+    justify-content: center;
+
+}
+
+.video{
+    width: 100%;
+    height: 100vh;
+    margin-top: 10%;
+    border-radius: 2px solid #fff;
+}
+
+.video > h2{
+    color: #D4AD5C;
+    margin-bottom: 20px;
+    font-weight: 900;
+    margin-top: 20px;
+    font-family: 'Bitter', serif;
+}
+
+.video > p{
+    color: #7DA1A5;
+    text-align: center;
+    margin-bottom: 5%;
+    line-height: 1.6em;
+    font-family: 'Bitter', serif;
+}
+
+/* Inicio content video end */
+
+/* container */
+.container{
+    background: url(../assets/background2_Prancheta\ 1.png);
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    flex-wrap:wrap ;
+    padding-top: 3%;
+
+}
+
+.cards {
+    background: white;
+    width: 280px;
+    height: 70%;
+    margin: 10px;
+    border-radius: 15px;
+    /* box-shadow: -1px 0 10px #000000; */
+    margin-bottom: 3%;
+}
+
+.card-img{
+    height: 230px;
+    margin-bottom: 15px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px 15px 0 0;
+}
+.card-1{
+    background-image: url(../assets/The_Legend_of_Zelda_Phantom_Hourglass_capa.png);
+}
+
+.card-2{
+    background-image: url(../assets/The_Legend_of_Zelda_Ocarina_of_Time_capa.png);
+}
+
+.card-3{
+    background-image: url(../assets/The_Legend_of_Zelda_Majoras_Mask_capa2.png);
+}
+
+.card-4{
+    background-image: url(../assets/Legend_of_Zelda_Breath_of_the_Wild_capa.png);
+}
+
+.cards h2{
+    padding: 10px;
+    font-family: 'Bitter', serif;
+}
+
+.cards p {
+    padding: 10px;
+    font-family: 'Bitter', serif;
+}
+
+.cards a {
+    background-color: black;
+    color: white;
+    padding: 15px 20px;
+    display: block;
+    text-align: center;
+    margin: 20px 50px;
+    text-decoration: none;
+}
+
+.cards:hover{
+    color: white;
+    background-color: #D4AD5C;
+    transform: scale(1.03);
+    transition: all 0.5s ease;
+}
+
+/* cards end */
+
+
+
+
+/* historia triforce */
+
+.content-triforce{
+    background-image: url(../assets/background2_Prancheta\ 1.png);
+    padding: 5%;
+    justify-content: center;
+    text-align: center;
+}
+
+.content-triforce p{
+    color: #7DA1A5;
+    line-height: 1.6em;
+    font-family: 'Bitter', serif;
+}
+
+.content-triforce h2{
+    color: #D4AD5C;
+    font-family: 'Bitter', serif;
+    margin-bottom: 3%;
+    font-size: 30px;
+    text-shadow: 0 1px 2px rgb(0 0 0 / 50%);
+}
+
+.content-triforce .triforce .img-triforce{
+    margin-bottom: 3%;
+    /* width: 300px;
+    height: 300px; */
+}
+
+
+.triforce-history{
+    background-image: url(../assets/background2_Prancheta\ 1.png);
+    padding: 5%;
+}
+
+.triforce-history h3{
+    color: #D4AD5C;
+    font-family: 'Bitter', serif;
+    font-style: italic;
+    font-weight: normal;
+    font-size: rem-calc(24px);
+    line-height: 1.5;
+    margin-bottom: 11px;
+    margin-left: 70px;
+    margin-top: 10px;
+    
+}
+
+.triforce-history p{
+    color: #7DA1A5;
+    font-family: 'Bitter', serif;
+    font-size: 22px;
+}
+
+.triforce-history span{
+    font-family: 'Bitter', serif;
+}
+
+.triforce-poder{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+.triforce-poder  h3  span{
+    font-size: 35px;
+    font-weight: bold;
+    display: block;
+    margin-left: -16px;
+    margin-top: -5px;
+}
+
+#ganon {
+    width: 340px;
+    height: 340px;
+    margin-left: 50px;
+}
+
+.triforce-sabedoria{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    margin-top: 5%;
+}
+
+.triforce-sabedoria  h3  span{
+    font-size: 35px;
+    font-weight: bold;
+    display: block;
+    margin-left: -50px;
+    margin-top: -5px;
+}
+
+.triforce-coragem{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    margin-top: 5%;
+}
+
+.triforce-coragem  h3  span{
+    font-size: 35px;
+    font-weight: bold;
+    display: block;
+    margin-left: -45px;
+    margin-top: -5px;
+}
+
+.triforce-coragem p{
+    font-size: 20px;
+}
+
+#link {
+    width: 340px;
+    height: 340px;
+    margin-left: 50px;
+    padding: 12px;
+}
+
+/* sobre  */
+
+.news{
+    background: url(../assets/background3_Prancheta\ 1.png);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.news .card-news1:nth-child(2){
+    margin-left: 0;
+}
+
+.card-titulo{
+    width: 350px;
+    height: 500px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    box-shadow: 0px 0px 99px 0 rgba(0,0,0,0.5);
+    margin-right: 30px;
+    background-color: #071a25;
+    color: #7DA1A5;
+    padding: 30px;
+    display: flex;
+    flex-direction: column; 
+    justify-content: flex-end;
+
+}
+
+.card-titulo h2{
+    font-family: 'Bitter', serif;
+    font-weight: bold;
+}
+
+.card-news1{
+    background: rgb(29, 29, 29);
+    box-shadow: 0px 0px 99px 0 rgba(0,0,0,0.5);
+    border-radius: 20px;
+    width: 350px;
+    height: 500px;
+    position: relative;
+    flex-shrink: 0;
+    margin-left: -175px;
+    transition: all ease-out 200ms;
+    justify-content: space-between;
+    flex-direction: column;
+    display: flex;
+}
+
+.card-news1:hover{
+    margin-right: 175px;
+    transform: translateY(-20px);
+}
+
+.bg-card1{
+    background: url(../assets/TheLegendofZeldaTwilightPrincessHD11.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 300px;
+    width: 100%;
+}
+
+.bg-card2{
+    background: url(../assets/ocarinaHall.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 300px;
+    width: 100%;
+}
+
+.bg-card3{
+    background: url(../assets/tramaDublador.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 300px;
+    width: 100%;
+}
+
+.bg-card4{
+    background: url(../assets/card-news1.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 300px;
+    width: 100%;
+}
+
+.topcard1{
+    padding: 20px;
+}
+
+.bottomcard1{
+    padding: 20px;
+}
+
+.btn-news1{
+    cursor: pointer;
+    border: 0;
+    background-color: black;
+    border-radius: 100vw;
+    padding: 8px 24px;
+    margin-top: 10px;
+    text-decoration: none;
+    color: white;
+    font-family: 'Bitter', serif;
+}
+
+.btn-news1:hover{
+    background-color: white;
+    color: black;
+}
+
+.data1{
+    font-family: 'Bitter', serif;
+    color: #7DA1A5;
+}
+
+.titulo1{
+    font-family: 'Bitter', serif;
+    font-style: normal;
+    color: #D4AD5C;
+    font-weight: bold;
+}
+
+.texto1{
+    font-family: 'Bitter', serif;
+    color: #7DA1A5;
+}
+
+
+.votes{
+    background-image: url(../assets/background3_Prancheta\ 1.png);
+    text-align: center;
+    padding: 5%;
+}
+
+h1{
+    color: #7DA1A5;
+    font-family: 'Bitter',serif;
+}
+
+p{
+    color: #7DA1A5;
+}
+
+
+/* footer */
+
+footer{
+    padding: 30px 0;
+    background-color: #333333;
+
+}
+
+footer .social{
+    text-align: center;
+    padding-bottom: 25px;
+    color: white;
+}
+
+footer .social a{
+    font-size: 24px;
+    color: inherit;
+    width: 40px;
+    height: 40px;
+    line-height: 38px;
+    text-align: center;
+    margin: 0 8px;
+    opacity: 0.75;
+    padding: 0 10px;
+}
+
+footer .social a:hover{
+    opacity: 0.9;
+    color: #D4AD5C;
+}
+
+footer ul{
+    margin-top: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+footer ul a {
+    color: white;
+    text-decoration: none;
+    opacity: 0.8;
+}
+
+footer ul li{
+    display: inline-block;
+    padding: 0 40px;
+}
+
+footer ul li a:hover{
+    opacity: 1;
+    color: #D4AD5C;
+}
+
+footer .copyriht{
+    margin-top: 15px;
+    text-align: center;
+    font-size: 13px;
+    color: white;
+}
+
+/* fim footer */

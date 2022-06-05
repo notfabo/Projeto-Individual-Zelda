@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/captcha.css">
+  <script src="./js/captcha.js"></script>
+</head>
+
+<body onload="createCaptcha()">
+
+  <style>
+    .modal-containerCap {
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, .5);
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      z-index: 2000;
+      display: none;
+      justify-content: center;
+      align-items: center;
+
+    }
+
+    .modal-containerCap .mostrar {
+      display: flex;
+    }
+
+    .modal {
+      background: white;
+      width: 60%;
+      min-width: 300px;
+      padding: 40px;
+      border: 10px solid #1F4887;
+    }
+
+    @keyframes modal {
+      from {
+        opacity: 0;
+        transform: translate3d(0, -60px, 0);
+      }
+
+      to {
+        opacity: 1;
+        transform: translate(0, 0, 0);
+      }
+    }
+
+    .mostrar .modal {
+      animation: modal .3s;
+    }
+
+    canvas {
+      /*prevent interaction with the canvas*/
+      pointer-events: none;
+
+
+    }
+
+    input[type=text] {
+      padding: 12px 20px;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+  </style>
+
+  <div id="modal-captcha" class="modal-containerCap mostrar">
+    <div class="modal">
+      <h3 class="subtitulo">Preencha o captcha</h3>
+      <form onsubmit="validateCaptcha()"></form>
+      <div id="captcha"></div>
+      <input type="text" placeholder="Captcha" id="cpatchaTextBox" />
+      <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </div>
+
+<script>
+  function incialModal(modalID){
+    const modal = document.getElementById(modalID);
+    console.log(modal);
+    modal.classList.add('show');
+  }
+
+  const cadastro = document.querySelector('#login');
+  login.addEventListener('click', function() {
+    inicialModal('modal-captcha');
+  });
+
+</script>
+
+
+</body>
+
+</html>
