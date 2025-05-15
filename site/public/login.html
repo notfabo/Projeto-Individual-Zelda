@@ -24,8 +24,6 @@
             <ul>
                 <div class="center-header">
                     <li class="fix"><a href="index.html">INÍCIO</a></li>
-                    <li class="fix"><a href="#sobre">SOBRE</a></li>
-                    <li class="fix"><a href="#noticias">NOTÍCIAS</a></li>
                 </div>
                 <div class="right-header">
                     <li class="fix" id="login"><a href="login.html">Entrar</a></li>
@@ -96,81 +94,16 @@
 </html>
 <script>
     function entrar() {
-
-        const open = document.getElementById('open');
         const modal_container = document.getElementById('modal_container');
-        const close = document.getElementById('close');
-
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
-
-        if (emailVar == "" || senhaVar == "") {
-            titulo_m.innerHTML = `<br>Preencha todos os campos para prosseguir.`
-
-
-            modal_container.classList.add('show');
-
-
-            modal_container.addEventListener('click', () => {
-                    modal_container.classList.remove('show');
-                });
         
-        
-        }
-        else {
-            titulo_m.innerHTML = `<br>Login realizado com sucesso!`
+        titulo_m.innerHTML = `<br>Serviço Indisponível`;
+        p_msg.innerHTML = `O serviço de login está temporariamente indisponível. Por favor, tente novamente mais tarde.`;
 
-        }
+        modal_container.classList.add('show');
 
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
-
-        fetch("/usuarios/autenticar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailServer: emailVar,
-                senhaServer: senhaVar
-            })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
-
-            if (resposta.ok) {
-                console.log(resposta);
-
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-
-                    setTimeout(function () {
-                        window.location = "./dashboard/dashboard.html";
-                    }, 1000); // apenas para exibir o loading
-
-                });
-
-            } else {
-                titulo_m.innerHTML = `<br>Email ou senha inválidos.`
-            p_msg.innerHTML = ``
-
-
-            modal_container.classList.add('show');
-
-
-            modal_container.addEventListener('click', () => {
-                    modal_container.classList.remove('show');
-                });
-                
-            }
-
-        }).catch(function (erro) {
-            console.log(erro);
-        })
+        modal_container.addEventListener('click', () => {
+            modal_container.classList.remove('show');
+        });
 
         return false;
     }

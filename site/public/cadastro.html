@@ -20,8 +20,6 @@
             <ul>
                 <div class="center-header">
                     <li class="fix"><a href="index.html">INÍCIO</a></li>
-                    <li class="fix"><a href="#sobre">SOBRE</a></li>
-                    <li class="fix"><a href="#noticias">NOTÍCIAS</a></li>
                 </div>
                 <div class="right-header">
                     <li class="fix" ><a href="login.html">Entrar</a></li>
@@ -105,98 +103,22 @@
 <script>
 
 function cadastrar() {
+    const modal_container = document.getElementById('modal_container');
+    
+    titulo_m.innerHTML = `<br>Serviço Indisponível`;
+    p_msg.innerHTML = `O serviço de cadastro está temporariamente indisponível. Por favor, tente novamente mais tarde.`;
 
-        const open = document.getElementById('open');
-        const modal_container = document.getElementById('modal_container');
-        const close = document.getElementById('close');
+    modal_container.classList.add('show');
 
-        //Recupere o valor da nova input pelo nome do id
-        // Agora vá para o método fetch logo abaixo
-        var nomeVar = nome_input.value;
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
-        var telVar = tel_input.value;
-        var selectVar = sel_op.value;
+    modal_container.addEventListener('click', () => {
+        modal_container.classList.remove('show');
+    });
 
-        if (nomeVar == "" || emailVar == "" || senhaVar == "" || telVar == "" || selectVar == "") {
-            titulo_m.innerHTML = `<br>Preencha todos os campos para prosseguir.`
+    return false;
+}
 
-            modal_container.classList.add('show');
-
-        
-            modal_container.addEventListener('click', () => {
-                    modal_container.classList.remove('show');
-                });
-            return
-        }
-
-        if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
-            titulo_m.innerHTML = `<br>Email inválidos.`
-
-            modal_container.classList.add('show');
-
-
-            modal_container.addEventListener('click', () => {
-                    modal_container.classList.remove('show');
-                });
-            return
-        }
-
-        if (telVar.length < 11){
-            titulo_m.innerHTML = `<br>Telefone inválido.`
-            p_msg.innerHTML = `<br> Ele deve conter 11 caracteres`
-
-            modal_container.classList.add('show');
-
-
-            modal_container.addEventListener('click', () => {
-                    modal_container.classList.remove('show');
-                });
-            return
-        }
-
-        // Enviando o valor da nova input
-        fetch("/usuarios/cadastrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                nomeServer: nomeVar,
-                emailServer: emailVar,
-                senhaServer: senhaVar,
-                telServer: telVar,
-                selectServer: selectVar
-            })
-        }).then(function () {
-
-            titulo_m.innerHTML = `<br>Cadastro realizado com sucesso!`
-            p_msg.innerHTML = ``
-            window.location.href = "login.html"
-
-
-            modal_container.classList.add('show');
-
-
-            close.addEventListener('click', () => {
-                modal_container.classList.remove('show');
-            });
-            setTimeout(() => {
-                    window.location = "login.html";
-                }, "2000")
-        })
-            .catch(function (errinho) {
-                console.error(errinho)
-            })
-
-        console.log()
-    }
-
-
-    function sumirMensagem() {
-        cardErro.style.display = "none"
-    }
+function sumirMensagem() {
+    cardErro.style.display = "none"
+}
 
 </script>
